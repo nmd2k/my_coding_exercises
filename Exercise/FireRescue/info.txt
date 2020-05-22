@@ -1,0 +1,11 @@
+wall + floor: 48x49
+box + paper + desk + bookshelf: 48x65
+
+
+wall1 = 1, wall2 = 2;
+bookshelf1 = 3; bookshelf2 = 4;
+armchair = 5;
+desk = 6;
+player = 7;
+hostage = 8;
+escape = 9;

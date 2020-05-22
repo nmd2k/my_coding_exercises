@@ -1,0 +1,8 @@
+﻿  core.cpp
+C:\Users\billy\Desktop\Fire_Rescue\const.h(16): warning C4091: 'static ': ignored on left of 'State' when no variable is declared
+C:\Users\billy\Desktop\Fire_Rescue\core.cpp(61): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Fire_Rescue.vcxproj -> C:\Users\billy\Desktop\Fire_Rescue\x64\Debug\Fire_Rescue.exe

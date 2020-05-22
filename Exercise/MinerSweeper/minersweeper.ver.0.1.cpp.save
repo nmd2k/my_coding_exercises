@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <ctime>
+#include <vector>
+#include <cstdlib>
+#include <stdlib.h>
+using namespace std;
+
+void setup ()
+{
+    
+}
+
+int main ()
+{
+
+    return 0;
+}

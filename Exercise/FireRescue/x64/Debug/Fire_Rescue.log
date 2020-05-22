@@ -1,0 +1,17 @@
+﻿  animation.cpp
+  checkGameOver.cpp
+E:\Project\Fire_Rescue\const.h(2,10): error C1083:  Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  closeGame.cpp
+E:\Project\Fire_Rescue\const.h(2,10): error C1083:  Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  core.cpp
+E:\Project\Fire_Rescue\const.h(2,10): error C1083:  Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  loadmap.cpp
+E:\Project\Fire_Rescue\const.h(2,10): error C1083:  Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  menu.cpp
+E:\Project\Fire_Rescue\const.h(2,10): error C1083:  Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  music.cpp
+E:\Project\Fire_Rescue\menu.h(2,10): error C1083:  Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  setPosition.cpp
+E:\Project\Fire_Rescue\const.h(2,10): error C1083:  Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Generating Code...
+E:\Project\Fire_Rescue\const.h(2,10): error C1083:  Cannot open include file: 'SFML/Graphics.hpp': No such file or directory

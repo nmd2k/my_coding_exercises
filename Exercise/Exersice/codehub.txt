@@ -1,0 +1,180 @@
+//Liệt kê từ:
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    string arr;
+    cin >> arr;
+    for(int i=0;i<arr.size();i++)
+    {
+        for(int j=0;j<arr.size();j++)
+        {
+            cout << arr[i] << arr[j] << " ";
+            for(int k=0; k<arr.size(); k++)
+            {
+                cout << arr[i] << arr[j] << arr[k] << " ";
+            }
+        }
+    }
+    return 0;
+}
+
+
+//Lật sách:
+
+#include<bits/stdc++.h>
+using namespace std;
+int solve(int n,int p){
+    int fromleft=p/2;
+    if(p%2==1) p--;
+    if(n%2==1) n--;
+    int fromright=(n-p)/2;
+    return min(fromleft,fromright);
+}
+int main(){
+    int n,p;
+    cin>>n>>p;
+    cout<<solve(n,p);
+
+    return 0;
+}
+
+//Lặp lại Tandem:
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+void tandem(int m,int n,string s){
+    m=m-1;
+    n=n-m;
+    int count=0;
+    string str=s.substr(m,n);
+    for(int i=m;i<s.length();){
+        string str1=s.substr(i,n);
+        if(str1==str){
+             count++;
+             i+=n;
+        }
+        else break;
+    }
+    cout<<count<<endl;
+}
+
+int main() {
+   int a,b;
+    cin>>a>>b;
+    string s;
+    cin>>s;
+    string str;
+    int m,n;
+    for(int i=0;i<b;i++){
+        cin>>m>>n;
+        tandem(m,n,s);
+    }
+    return 0;
+}
+
+//Đá hậu:
+#include<iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+
+int test1(int ax, int ay, int bx, int by){
+    if(ax == bx or ay == by) return 1;
+    else return 0;
+}
+
+int test2(int ax, int ay, int bx, int by){
+    int alpha = ay - by;
+    bx -= alpha;
+    by += alpha;
+    if(ax == bx and ay == by) return 1;
+    return 0;
+}
+
+int test3(int ax, int ay, int bx, int by){
+    int alpha = ay - by;
+    bx += alpha;
+    by += alpha;
+    if(ax == bx and ay == by) return 1;
+    return 0;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    int m = n * 2;
+    int a[m];
+    for(int i = 0; i < m; i++){
+        cin >> a[i];
+    }
+    for(int i = 0; i < m; i += 2){
+        for(int j = 0; j < m; j += 2){
+            if((test1(a[i], a[i+1], a[j], a[j+1]) == 1 or test2(a[i], a[i+1], a[j], a[j+1]) == 1
+                or test3(a[i], a[i+1], a[j], a[j+1]) == 1) and i != j){
+                cout << "yes";
+                return 0;
+               }
+        }
+    }
+    cout << "no";
+}
+
+
+//Giữa hai mảng:
+
+
+#include<iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+
+bool uocChung(int a[], int b, int s){
+    for(int i = 0; i < s; i++){
+        if(a[i] % b != 0){
+        return false;
+        }
+    }
+    return true;
+}
+
+bool boiChung(int a[], int b, int s){
+    for(int i = 0; i < s; i++){
+        if(b % a[i] != 0){
+        return false;
+        }
+    }
+    return true;
+}
+
+int main()
+{
+    int n, m;
+    cin >> n >> m;
+    int a[n], b[m];
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    for(int i = 0; i < m; i++){
+        cin >> b[i];
+    }
+    sort(a, a+ n);
+    sort(b, b + m);
+    vector<int> con2, resault;
+    for(int j = 1; j < b[m - 1] ; j++){
+        if(uocChung(b, j, m)){
+            con2.push_back(j);
+        }
+    }
+    for(int i = 0; i < con2.size(); i++){
+        if(boiChung(a, con2.at(i), n)){
+            resault.push_back(con2.at(i));
+        }
+    }
+    cout << resault.size();
+}
