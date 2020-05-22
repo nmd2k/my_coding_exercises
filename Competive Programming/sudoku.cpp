@@ -77,7 +77,7 @@ void solveSudoku(int x, int y){
         }
         
         //reach the end of row
-        else { solveSudoku(x+1, y); }
+        else { solveSudoku(x+1, 0); }
     }
 
     //0 means element don't have any value
@@ -85,14 +85,14 @@ void solveSudoku(int x, int y){
         for (int i=1; i<=9; i++){
             if (checkValid(x, y, i)){
                 sudoku[x][y] = i;
-                solveSudoku (x, y+1);
-                //sudoku[x][y] = 0;
+                solveSudoku(x, y+1);
+                sudoku[x][y] = 0;
             }
         }
     }
 
     else {
-        solveSudoku(x, y + 1);
+        solveSudoku(x, y+1);
     }
 }
 
