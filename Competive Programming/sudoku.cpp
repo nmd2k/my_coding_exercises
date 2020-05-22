@@ -1,10 +1,51 @@
 /*Placing all solutions in N-queen problem*/
 #include <iostream>
+#define YELLOW  "\033[33m"
+#define GREEN   "\033[32m"
+#define RESET   "\033[0m"
 using namespace std;
 
-int n;
+int sudoku_start[9][9] = 
+                    {  { 3, 0, 6, 5, 0, 8, 4, 0, 0 }, 
+                       { 5, 2, 0, 0, 0, 0, 0, 0, 0 }, 
+                       { 0, 8, 7, 0, 0, 0, 0, 3, 1 }, 
+                       { 0, 0, 3, 0, 1, 0, 0, 8, 0 }, 
+                       { 9, 0, 0, 8, 6, 3, 0, 0, 5 }, 
+                       { 0, 5, 0, 0, 9, 0, 6, 0, 0 }, 
+                       { 1, 3, 0, 0, 0, 0, 2, 5, 0 }, 
+                       { 0, 0, 0, 0, 0, 0, 0, 7, 4 }, 
+                       { 0, 0, 5, 2, 0, 6, 3, 0, 0 } }; 
 int sudoku[9][9];
 int used[9];
+
+void input(){
+    for(int i=0; i<9; i++){
+        for(int j=0; j<9; j++){
+            cin >> sudoku_start[i][j];
+        }
+    }
+}
+
+void show(){
+    cout << "Solution:" << endl;
+    for (int i=0; i<9; i++){
+        for (int j=0; j<9; j++){
+            if (sudoku_start[i][j] == 0){
+                cout << GREEN << sudoku[i][j] << RESET << " ";
+            } 
+            else { cout << YELLOW << sudoku[i][j] << RESET << " "; }
+        }
+        cout << endl;
+    }
+}
+
+void toEqual(int a[9][9], int b[9][9]){
+    for (int i=0; i<9; i++){
+        for (int j=0; j<9; j++){
+            a[i][j] = b[i][j];
+        }
+    }
+}
 
 bool checkValid(int x, int y, int k){
     //check row
@@ -28,64 +69,36 @@ bool checkValid(int x, int y, int k){
 }
 
 void solveSudoku(int x, int y){
-    //reach the end of sudoku box
-    if (y==8){
+    if (y==9){
+        //reach the end of sudoku box
         if (x==8){
             show();
             return;
         }
+        
+        //reach the end of row
+        else { solveSudoku(x+1, y); }
     }
 
-    //reach the end of row
-    if (x==8){
-        y++;
-        x = 0;
-    }  
-
-    if(sudoku[x][y] == 0) {
+    //0 means element don't have any value
+    else if(sudoku[x][y] == 0){
         for (int i=1; i<=9; i++){
-            //checkValid check all the element, even the one that's not completely
             if (checkValid(x, y, i)){
                 sudoku[x][y] = i;
-                solveSudoku (x + 1, y);
-                sudoku[x][y] = 0;
+                solveSudoku (x, y+1);
+                //sudoku[x][y] = 0;
             }
         }
     }
-}
 
-
-void show() {
-    for (int i=0; i<n; i++){
-        for (int j=0; j<n; j++){
-            cout << sudoku[i][j] << "  ";
-        }
-        cout << endl;
+    else {
+        solveSudoku(x, y + 1);
     }
 }
 
 int main (){
-    
-    for(int i=0; i<9; i++){
-        for(int j=0; j<9; j++){
-            cin >> sudoku[i][j];
-        }
-    }
-
-    show();
-
+    //input();
+    toEqual(sudoku,sudoku_start);
     solveSudoku(0, 0);
     return 0;
 }
-
-/*
-3 0 6 5 0 8 4 0 0 
-5 2 0 0 0 0 0 0 0 
-0 8 7 0 0 0 0 3 1 
-0 0 3 0 1 0 0 8 0 
-9 0 0 8 6 3 0 0 5 
-0 5 0 0 9 0 6 0 0 
-1 3 0 0 0 0 2 5 0 
-0 0 0 0 0 0 0 7 4 
-0 0 5 2 0 6 3 0 0
-*/
