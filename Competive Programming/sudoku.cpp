@@ -29,6 +29,7 @@ void input(){
 void show(){
     cout << "Solution:" << endl;
     for (int i=0; i<9; i++){
+        if (i%3==0 && i!=0) cout << "---------------------" << endl;
         for (int j=0; j<9; j++){
             if (j%3==0 && j!=0) cout << "| ";
             if (sudoku_start[i][j] == 0){
@@ -37,8 +38,6 @@ void show(){
             else { cout << YELLOW << sudoku[i][j] << RESET << " "; }
         }
         cout << endl;
-        if ((i+1)%3==0) cout << "---------------------" << endl;
-        
     }
 }
 
