@@ -21,7 +21,7 @@ void backtrack (int pos) {
 
     for (int i=1; i<=n; i++) {
         if (!used[i]) {
-            a[pos] = i;
+            a[pos] = i;3
             used[i] = true;
             backtrack(pos+1);
             used[i] = false; //when it's done, return it!

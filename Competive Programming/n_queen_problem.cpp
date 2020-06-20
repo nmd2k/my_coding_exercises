@@ -1,17 +1,15 @@
 #include <iostream>
-#include <stack>
-#include <iterator>
+#include <vector>
 using namespace std;
 #define GREEN   "\033[32m"
 #define RESET   "\033[0m"
 
 int n = 8;
-int a[100][100];
-int used[100][100];
-stack <Queen> queen_stack;
+int a[7][7];
+int used[7][7];
 
 class Queen {
-    public:
+    public: 
         int x, y;
 
     Queen(int _x, int _y){
@@ -19,6 +17,8 @@ class Queen {
         int y = _y;
     }
 };
+
+vector <Queen> queens;
 
 void show(){
     for (int i=0; i<n; i++){
@@ -30,6 +30,14 @@ void show(){
             }
         }
         cout << endl;
+    }
+}
+
+bool checkValid(int x, int y){
+    for (int i=0; i<n; i++){
+        if(x == queens[i].x) return false;
+        if(y == queens[i].y) return false;
+        if(abs(x - queens[i].x) == abs(y - queens[i].y)) return false;
     }
 }
 
@@ -52,13 +60,13 @@ void backtrack(int x, int y){
 
 }
 
-bool checkValid(int x, int y){
-    for (int i=0; i<n; i++){
-    }
-}
-
 int main(){
-    cin >> n;
+    // for (int i=0; i<n; i++){
+    //     for (int j=0; j<n; j++){
+    //         cin >> a[i][j];
+    //     }
+    // }
+
     backtrack(0, 0);
     return 0;
 }
